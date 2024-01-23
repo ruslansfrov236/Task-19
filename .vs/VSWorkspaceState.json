@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\book.business",
+    "\\book.webui",
+    "\\book.webui\\Controllers",
+    "\\book.webui\\EmailServices",
+    "\\book.webui\\Identify"
+  ],
+  "SelectedNode": "\\book.webui\\Controllers\\AccountController.cs",
+  "PreviewInSolutionExplorer": false
+}

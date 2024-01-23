@@ -1,0 +1,61 @@
+@model RegisterModel
+
+<link rel="stylesheet" href="~/css.style.css">
+
+
+
+
+<div id="create-text">
+    <h1>Register</h1>
+    <hr />
+</div>
+<form asp-controller="Account" asp-action="Register" method="POST" class="create">
+    <div asp-validation-summary="All" class="create-danger">
+
+    </div>
+    <label class="create-label " asp-for="FirstName"></label>
+
+    <input class="create-input" asp-for="FirstName" />
+    <span class="create-danger" asp-validation-for="FirstName"></span>
+
+
+    <label class="create-label " asp-for="LastName"></label>
+    <input class="create-input" asp-for="LastName" />
+    <span class="create-danger" asp-validation-for="LastName"></span>
+
+    <label class="create-label " asp-for="UserName"></label>
+    <input class="create-input" asp-for="UserName" />
+    <span class="create-danger" asp-validation-for="UserName"></span>
+
+    <label class="create-label " asp-for="Email"></label>
+
+    <input class="create-input" asp-for="Email" />
+    <span class="create-danger" asp-validation-for="Email"></span>
+
+    <label class="create-label " asp-for="Passwords"></label>
+
+    <input class="create-input" asp-for="Passwords" />
+    <span class="create-danger" asp-validation-for="Passwords"></span>
+
+    <label class="create-label " asp-for="RePasswords"></label>
+    <input  asp-for="RePasswords" class="create-input"/>
+
+    <span class="create-danger" asp-validation-for="RePasswords"></span>
+
+
+
+
+
+
+    <button id="create-btn">Submit</button>
+
+</form>
+
+0
+@section Scripts
+{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.9.0/jquery.validate.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+}

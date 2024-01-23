@@ -1,0 +1,65 @@
+@model ProductListViewModel
+
+
+@{
+    var products = Model.Products;
+
+}
+
+@await Html.PartialAsync("_header");
+<main>
+
+
+ 
+    <div class="row">
+        <div class="col-3">
+            @await Component.InvokeAsync("Categories")
+        </div>
+
+        @if (products.Count() == 0)
+        {
+            @await Html.PartialAsync("_noproduct")
+
+        }
+        else
+        {
+
+            <div class="col-9">
+
+                @foreach (var pr in products)
+                {
+                    @await Html.PartialAsync("_product" , pr)
+                }
+            </div>
+
+        }
+
+    </div>
+    <div id="pagination-row">
+        <div class="col">
+            <nav id="nav-pagination" aria-label="Page navigation example">
+                <ul class="pagination">
+
+                    @for (int i = 0; i < Model.PageInfo.TotalPages(); i++)
+                    {
+                        @if (String.IsNullOrEmpty(Model.PageInfo.CurrentCategory))
+                        {
+                            <li class="page-item @(@Model.PageInfo.CurrentPage==i+1?"active":"")">
+                                <a class="page-link" href="/products?page=@(i+1)">@(i+1)</a>
+                            </li>
+                        }
+                        else
+                        {
+                                 <li class="page-item @(@Model.PageInfo.CurrentPage==i+1?"active":"")">
+                                <a class="page-link" href="/products/@Model.PageInfo.CurrentCategory?page=@(i+1)">@(i+1)</a>
+                            </li>
+                        }
+
+                    }
+
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</main>

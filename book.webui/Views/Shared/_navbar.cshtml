@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="~/css/style.css">
+
+
+<nav id="navbar-menu">
+    <a href="/home/index" id="logo">BookCenter</a>
+
+    <ul id="navbar">
+        <li><a href="/home/index" class="nav-link">Home</a></li>
+        <li><a href="\products" class="nav-link">Product</a></li>
+
+
+        <li><a asp-controller="Home" class="nav-link" asp-action="Contact">Contact</a></li>
+        @if(User.Identity.IsAuthenticated){
+         <li class="nav-item">
+            <a href="" class="nav-link">Cart</a>
+        </li>
+        <li class="nav-item">
+            <a href="" class="nav-link">Orders</a>
+        </li>
+         <li class="nav-item">
+            <a href="/admin/productcreate" class="nav-link"><i
+                    class="fa-solid fa-cart-plus"></i></a>
+        </li>
+        
+        <li class="nav-item">
+            <a href="/admin/products" class="nav-link"><i class="fa-solid fa-gear"></i></a>
+        </li>
+        <li class="nav-item">
+            <a href="/admin/category" class="nav-link"><i class="fa-solid fa-pen"></i></a>
+        </li>
+        }
+
+    </ul>
+    <ul id="navbar-panel">
+       
+        @if(User.Identity.IsAuthenticated){
+
+            <li class="nav-item">
+            <a href="/account/manage" class="nav-link">@User.Identity.Name</a>
+        </li>
+            <li class="nav-item">
+            <a href="/account/logout" class="nav-link"><i class="fa-solid fa-right-to-bracket"></i></a>
+        </li>
+        }else{
+              <li class="nav-item">
+            <a href="/account/login" class="nav-link"><i class="fa-solid fa-right-to-bracket"></i></a>
+        </li>
+         <li class="nav-item">
+            <a href="/account/register" class="nav-link"><i class="fa-solid fa-registered"></i></a>
+        </li>
+        }
+       
+        
+         </ul>
+ 
+  
+</nav>

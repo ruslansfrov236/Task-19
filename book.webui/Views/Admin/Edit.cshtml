@@ -1,0 +1,118 @@
+@model ProductModel
+
+<link rel="stylesheet" href="~/css.style.css">
+
+<style>
+  
+</style>
+
+
+    <div id="create-text">
+        <h1>Edit Product</h1>
+        <hr />
+    </div>
+    <form asp-controller="Admin" asp-action="Edit" method="POST" class="create" enctype="multipart/form-data">
+       
+         <div class="create-danger" asp-validation-summary="All">
+        
+       </div>   
+
+        
+   <div class="row">
+      
+    <div class="col-9">
+     
+ 
+        <input class="create-input" type="hidden" name="ProductId" value="@Model.ProductId">
+            
+        <label class="create-label " asp-for="Name"></label>
+        <input class="create-input" asp-for="Name" />
+        <span class="create-danger" asp-validation-for="Name"></span>
+
+
+        <label asp-for="Url"></label>
+        <input class="create-input" asp-for="Url" />
+
+
+        <label class="create-label " asp-for="Price"></label>
+        <input class="create-input" asp-for="Price" />
+         <span class="create-danger" asp-validation-for="Price"></span>
+
+
+         
+             
+        
+            
+          <div style="display:block;  height:180px;">
+               <label class="create-label " style="margin:20px 0" asp-for="ImageUrl"></label>
+          <input type="hidden" asp-for="ImageUrl">
+                    <img src="~/img/@Model.ImageUrl" width="80"/>
+                    <input type="file" name="file">
+    </div>
+
+
+    <div style="display:block ;">
+
+        <label class="create-label " asp-for="Description"></label>
+        <span class="create-danger" asp-validation-for="Description"></span>
+        <textarea id="editor"asp-for="Description"></textarea>
+    </div>
+
+
+
+        <button id="create-btn">Submit</button>
+
+
+    </div>
+     <div class="col-3">
+
+        <div class="custom">
+            @for (int i = 0; i < Model.SelectedCategories.Count; i++)
+            {
+                <input type="hidden" name="SelectedCategories[@i].categoryId" value="@Model.SelectedCategories[@i].CategoryId" />
+                <input type="hidden" name="SelectedCategories[@i].Name" value="@Model.SelectedCategories[@i].Name" />
+            }
+            @foreach (var item in (List<Category>)ViewBag.Categories)
+        {
+           
+               <div class="custom-control">
+                 <input type="checkbox"
+                  class="custom-control-input" 
+                  name="categoryIds" 
+                   value="@item.CategoryId" 
+                   id="category_@(item.CategoryId)" 
+                   @(Model.SelectedCategories.Any(i=>i.CategoryId==item.CategoryId)? "checked" : " ")/>
+                <label class="custom-control-label" for="category_@(item.CategoryId)">@item.Name</label>
+               </div>
+             
+                 
+          
+        }
+          <hr/>
+        <div class="custom-control">
+                     <input type="checkbox" asp-for="IsApproved" class="custom-control-input" />
+                     <label asp-for="IsApproved" class="custom-control-label" ></label>
+               </div>
+                <div class="custom-control">
+                      <input type="checkbox" asp-for="IsHome" class="custom-control-input" />
+                      <label asp-for="IsHome" class="custom-control-label" ></label>
+               </div>
+        </div>
+
+
+     </div>
+    
+
+
+    
+
+ </form>
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.9.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/dosya/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
+}

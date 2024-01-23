@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title></title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='~/css/style.css'>
+
+</head>
+
+<body>
+    @await Html.PartialAsync("_navbar")
+     @if(TempData["message"]!=null){
+        var message=JsonConvert.DeserializeObject<AlertMessage>(TempData["message"] as String);
+        <div id="message-@message.AlertType">
+            @message.Message
+           
+        </div>}
+<main>
+
+
+
+
+
+
+    @RenderBody()
+
+
+</main>
+<footer>
+    <p>&copy; 2022 BookCenter.com</p>
+</footer>
+</body>
+<script src="https://kit.fontawesome.com/9df1d44044.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+@RenderSection("Scripts" , false )
+
+</html>
+

@@ -1,0 +1,37 @@
+@model ProductListViewModel
+
+
+@{
+    var products = @Model.Products;
+    
+}
+
+@await Html.PartialAsync("_header");
+
+
+       <div class="row">
+         <div class="col-3">
+            @await Component.InvokeAsync("Categories")
+            <partial name ="_search"/>
+        </div>
+
+        @if (products.Count() == 0)
+        {
+            @await Html.PartialAsync("_noproduct")
+
+        }
+        else
+        {
+
+            <div class="col-9">
+
+                @foreach (var pr in products)
+                {
+                    @await Html.PartialAsync("_product" , pr)
+                }
+            </div>
+
+        }
+       </div>
+
+ 

@@ -1,0 +1,36 @@
+@model ProductDetailModel
+<link rel="stylesheet" href="~/css/style.css">
+
+@await Html.PartialAsync("_header");
+<main>
+    <div class="row">
+      
+
+
+
+
+        <div class="col-9">
+
+            <div class="row-details">
+                <div class="col-5">
+                    <img src="~/img/@Model.Product.ImageUrl" alt="">
+                </div>
+                <div class="col-7">
+                    <h1>@Model.Product.Name</h1>
+                    <hr>
+                   @foreach (var item in Model.Categories)
+                   {
+                     <a asp-controller="book" asp-action="list" asp-route-category="@item.Url" id="tekst-dd"> @item.Name </a>
+                   }
+                    <p>@Model.Product.Price  <i class="fa-solid fa-manat-sign"></i></p>
+                    <p>@Html.Raw(Model.Product.Description)</p>
+                    <a href="#" class="btn-details"> Add To Cart</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</main>

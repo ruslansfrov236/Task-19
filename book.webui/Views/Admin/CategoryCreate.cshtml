@@ -1,0 +1,41 @@
+@model CategoryModel
+
+<link rel="stylesheet" href="~/css.style.css">
+
+<style>
+
+</style>
+
+
+<div id="create-text">
+    <h1>Create Category</h1>
+    <hr />
+</div>
+<form asp-controller="Admin" asp-action="CategoryCreate" method="POST" class="create">
+    <div class="create-danger" asp-validation-summary="All">
+        <span class="create-danger"  asp-validation-summary="All"></span>
+    </div>
+    <label class="creare-label" asp-for="Name"></label>
+
+    <input class="create-input" asp-for="Name" />
+    <span class="create-danger" asp-validation-for="Name"></span>
+    <label class="creare-label" asp-for="Url"></label>
+
+    <input class="create-input" asp-for="Url" />
+    <span class="create-danger" asp-validation-for="Url"></span>
+
+
+
+
+
+
+
+
+    <button type="submit" id="create-btn"> Edit Category</button>
+
+</form>
+@section Scripts
+{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.9.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+}

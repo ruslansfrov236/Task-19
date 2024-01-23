@@ -1,0 +1,54 @@
+@model ProductModel
+
+<link rel="stylesheet" href="~/css.style.css">
+
+
+
+
+<div id="create-text">
+    <h1>Create Product</h1>
+    <hr />
+</div>
+<form asp-controller="Admin" asp-action="CreateProduct" method="POST" class="create">
+    <div asp-validation-summary="All" class="create-danger">
+
+    </div>
+    <label class="create-label " asp-for="Name"></label>
+    <span class="create-danger" asp-validation-for="Name"></span>
+    <input class="create-input" asp-for="Name" />
+    <label class="create-label " asp-for="Url"></label>
+
+    <input class="create-input" asp-for="Url" />
+    <label class="create-label " asp-for="Price"></label>
+    <span class="create-danger" asp-validation-for="Price"></span>
+    <input class="create-input" asp-for="Price" />
+    <div style="display:block; height:100px;">
+        <label class="create-label " asp-for="ImageUrl"></label>
+        <span class="create-danger" asp-validation-for="ImageUrl"></span>
+        <input class="create-input" asp-for="ImageUrl" />
+    </div>
+
+
+    <div style="display:block ;">
+
+        <label class="create-label " asp-for="Description"></label>
+        <span class="create-danger" asp-validation-for="Description"></span>
+        <textarea id="editor" asp-for="Description"></textarea>
+    </div>
+
+
+    <button id="create-btn">Submit</button>
+
+</form>
+
+0
+@section Scripts
+{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.9.0/jquery.validate.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/dosya/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('editor');
+</script>
+}

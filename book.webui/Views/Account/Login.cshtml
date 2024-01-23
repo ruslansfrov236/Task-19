@@ -1,0 +1,51 @@
+@model LoginModel
+
+<link rel="stylesheet" href="~/css.style.css">
+
+
+
+
+<div id="create-text">
+    <h1>Register</h1>
+    <hr />
+</div>
+<form asp-controller="Account" asp-action="Login" method="POST" class="create">
+   <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl">
+      <div asp-validation-summary="All" class="create-danger">
+
+    </div>
+
+  
+
+    
+
+
+    <label class="create-label " asp-for="Email"></label>
+    <input class="create-input" asp-for="Email" />
+    <span class="create-danger" asp-validation-for="Email"></span>
+
+    @* <label class="create-label " asp-for="UserName"></label>
+    <input class="create-input" asp-for="UserName" />
+    <span class="create-danger" asp-validation-for="UserName"></span> *@
+    <label class="create-label " asp-for="Passwords"></label>
+
+    <input class="create-input" asp-for="Passwords" />
+    <span class="create-danger" asp-validation-for="Passwords"></span>
+
+
+
+
+
+
+    <button id="create-btn">Submit</button>
+
+</form>
+
+
+@section Scripts
+{
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.9.0/jquery.validate.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+}
